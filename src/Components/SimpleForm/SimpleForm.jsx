@@ -1,21 +1,45 @@
 import React from "react";
 
 const SimpleForm = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("form submitted");
+    console.log(e.target.name.value);
+    console.log(e.target.email.value);
+    console.log(e.target.phone.value);
+  };
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
-            <fieldset className="fieldset">
+            <h2 className="text-2xl text-center mb-6">Simple Form</h2>
+            <form onSubmit={handleSubmit} className="fieldset">
+              <label className="label">Name</label>
+              <input
+                type="text"
+                name="name"
+                className="input"
+                placeholder="Name"
+              />
               <label className="label">Email</label>
-              <input type="email" className="input" placeholder="Email" />
-              <label className="label">Password</label>
-              <input type="password" className="input" placeholder="Password" />
-              <div>
-                <a className="link link-hover">Forgot password?</a>
-              </div>
-              <button className="btn btn-neutral mt-4">Login</button>
-            </fieldset>
+              <input
+                type="email"
+                name="email"
+                className="input"
+                placeholder="Email"
+              />
+              <label className="label">Phone</label>
+              <input
+                type="text"
+                name="phone"
+                className="input"
+                placeholder="Phone"
+              />
+              <button type="submit" className="btn btn-neutral mt-4">
+                Submit
+              </button>
+            </form>
           </div>
         </div>
       </div>
