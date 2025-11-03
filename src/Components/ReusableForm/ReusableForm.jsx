@@ -1,20 +1,25 @@
 import React from "react";
 
-const SimpleForm = () => {
-  const handleSubmit = (e) => {
+const ReusableForm = ({ formTitle, submitText, handleSubmit }) => {
+  const handleLocalSubmit = (e) => {
     e.preventDefault();
-    console.log("form submitted");
-    console.log(e.target.name.value);
-    console.log(e.target.email.value);
-    console.log(e.target.phone.value);
+    const data = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+    handleSubmit(data);
   };
   return (
     <div className="hero">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
-            <h2 className="text-2xl text-center mb-6">Simple Form</h2>
-            <form onSubmit={handleSubmit} className="fieldset">
+            <h2 className="text-2xl text-center ">{formTitle}</h2>
+            <h2 className="text-sm text-center text-amber-300">
+              Reusable Form
+            </h2>
+            <form onSubmit={handleLocalSubmit} className="fieldset">
               <label className="label">Name</label>
               <input
                 type="text"
@@ -37,7 +42,7 @@ const SimpleForm = () => {
                 placeholder="Password"
               />
               <button type="submit" className="btn btn-neutral mt-4">
-                Submit
+                {submitText}
               </button>
             </form>
           </div>
@@ -47,4 +52,4 @@ const SimpleForm = () => {
   );
 };
 
-export default SimpleForm;
+export default ReusableForm;
